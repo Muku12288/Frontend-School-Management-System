@@ -1,0 +1,30 @@
+<div class="card-container" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
+    <mat-card class="student-card" *ngFor="let leave of leaves">
+
+        <mat-card-header style="background-color: #3f51b5">
+            <mat-card-title style="color: white;">ID : <strong>{{ leave.userid}}</strong></mat-card-title>
+            <!-- <mat-card-subtitle style="color: white;">Class: <strong>{{ leave.studentClass}}</strong></mat-card-subtitle> -->
+        </mat-card-header>
+
+        <mat-card-content style="margin-top: 10px;">
+            <p>Subject : <strong>{{ leave.subject}}</strong></p>
+            <p>Body : <strong>{{ leave.body}}</strong></p>
+            <p>Date: <strong>{{ leave.date | date: 'ddMMM y'}}</strong></p>
+            <p>Status: <strong
+                [ngStyle]="{'color': leave.studentLeaveStatus === 'Approved' ? 'green' : leave.studentLeaveStatus === 'Disapproved' ?
+                 'red' : 'orange'}">{{leave.studentLeaveStatus}}</strong></p>
+        </mat-card-content>
+<!-- Action Menu button for perform action either Approve or reject-->
+        <mat-card-actions>
+            <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">Action</button>
+            <mat-menu #menu="matMenu">
+                <!-- when we click these button it will call this method with these static value -->
+     <!--Here leave.id will get, when call getAllLeaves() in admin-leaves.ts, leaves variable are assign by response value-->
+                <button mat-menu-item (click)="changeLeaveStatus(leave.id, 'Approve')">Approve</button>
+                <button mat-menu-item (click)="changeLeaveStatus(leave.id, 'Reject')">Reject</button>
+            </mat-menu>
+        </mat-card-actions>
+
+    </mat-card>
+</div>
+

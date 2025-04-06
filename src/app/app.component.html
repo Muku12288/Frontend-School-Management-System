@@ -1,0 +1,43 @@
+<!-- Home page nav bar -->
+
+<div *ngIf="!isAdminLoggedIn && !isStudentLoggedIn">
+  <mat-toolbar color="primary" class="navbar">
+    <span class="navbar-brand">School Management</span>
+    <span class="spacer"></span>
+    <button mat-button routerLink="/home" routerLinkActive="active">Home</button>
+    <button mat-button routerLink="/login" routerLinkActive="active">Login</button>
+  </mat-toolbar>
+  
+</div>
+
+<!-- Admin page nav bar -->
+<div *ngIf="isAdminLoggedIn">
+  <mat-toolbar color="primary" class="navbar">
+    <span class="navbar-brand">School Management</span>
+    <span class="spacer"></span>
+    <button mat-button routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</button>
+    <button mat-button routerLink="/admin/teacher" routerLinkActive="active">Add Teacher</button>
+    <button mat-button routerLink="/admin/teachers" routerLinkActive="active">All Teachers</button>
+    <button mat-button routerLink="/admin/student" routerLinkActive="active">Add Student</button>
+    <button mat-button routerLink="/admin/students" routerLinkActive="active">Students</button>
+    <button mat-button routerLink="/admin/leaves" routerLinkActive="active">Leaves</button>
+    <button mat-button  (click)="logout()" routerLinkActive="active">Logout</button>
+  </mat-toolbar> 
+</div>
+
+<!-- Student page nav bar -->
+<div *ngIf="isStudentLoggedIn">
+  <mat-toolbar color="primary" class="navbar">
+    <span class="navbar-brand">School Management</span>
+    <span class="spacer"></span>
+    <button mat-button routerLink="/student/dashboard" routerLinkActive="active">Dashboard</button>
+    <button mat-button routerLink="/student/leave" routerLinkActive="active">Leave</button>
+    <button mat-button routerLink="/student/leaves" routerLinkActive="active">My Leaves</button>
+    <button mat-button  (click)="logout()" routerLinkActive="active">Logout</button>
+  </mat-toolbar> 
+</div>
+
+
+<!-- <mat-slide-toggle>Toggle me!</mat-slide-toggle> -->
+
+<router-outlet></router-outlet>

@@ -32,7 +32,7 @@ export class AdminGuard implements CanActivate{
       this.router.navigateByUrl("/student/dashboard");
       return false;
     } 
-    // if toket is not present in localstorage means any one not loggedin so it will navigate into login page 
+    // if token is not present in localstorage means any one not loggedin so it will navigate into login page 
     // and show an error through snackbar
     else if(!StorageService.hasToken()){
       StorageService.logout();

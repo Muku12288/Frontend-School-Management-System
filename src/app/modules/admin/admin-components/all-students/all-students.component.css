@@ -1,4 +1,4 @@
-.card-container{
+/*.card-container{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -47,7 +47,19 @@
         margin-bottom: 8px;
     }
 }
-
+*/
 mat-card-actions{
     justify-content: flex-end;
 }
+table th{
+    color: white;       
+    font-size: 18px;      
+    font-weight: bold;    
+    background-color: #032a83; 
+    text-align: left
+}
+ .example-form{
+    border-radius: 3%;
+} 
+
+

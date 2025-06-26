@@ -1,4 +1,4 @@
-<div class="card-container" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
+<!-- <div class="card-container" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
     <mat-card class="student-card" *ngFor="let student of students">
 
         <mat-card-header style="background-color: #3f51b5;">
@@ -19,4 +19,85 @@
             <button mat-button color="warn" (click)="deleteStudent(student.id)">Delete</button>
         </mat-card-actions>
     </mat-card>
+</div> -->
+
+
+<!--  import {MatTableModule} from '@angular/material/table'; -->
+
+<div>
+
+    <div style="display: flex; width: auto; justify-content: space-between;">
+        <div style=" align-content: center; margin-left: 20px;">
+            <h1 style=" padding: 6px; font-weight: bold; color: rgb(9, 9, 134);">OUR ALL STUDENTs</h1>
+        </div>
+        <div style=" margin-right: 40px; ">
+            <!-- <mat-form-field appearance="outline" class="custom-search">
+                <input matInput placeholder="Search here" type="text">
+
+            </mat-form-field> -->
+            <mat-form-field appearance="outline">
+                <mat-label>Search</mat-label>
+                    <input (input)="searchStudent(filter.value)" matInput placeholder="search student" #filter>
+                <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+        </div>
+    </div>
+    
+        
+  
+
+    <div class="container" style="width: full; margin-left: 20px; margin-right: 20px; margin-top: 10px; ">
+        
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 ">
+
+        <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- Id Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number"> Id </th>
+                <td mat-cell *matCellDef="let student"> {{student.id}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name"> Name </th>
+                <td mat-cell *matCellDef="let student"> {{student.name}} </td>
+            </ng-container>
+
+            <!-- Email_Id Column -->
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Email_Id </th>
+                <td mat-cell *matCellDef="let student"> {{student.email}} </td>
+            </ng-container>
+
+            <!-- Gender Column -->
+            <ng-container matColumnDef="gender">
+                <th mat-header-cell *matHeaderCellDef> Gender </th>
+                <td mat-cell *matCellDef="let student"> {{student.gender}} </td>
+            </ng-container>
+
+            <!-- DOB Column -->
+            <ng-container matColumnDef="dob">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> DOB </th>
+                <td mat-cell *matCellDef="let student"> {{student.dob | date: 'd,MMM,y'}} </td>
+            </ng-container>
+
+            <!-- Class Column -->
+            <ng-container matColumnDef="studentClass">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Class </th>
+                <td mat-cell *matCellDef="let student"> {{student.studentClass}} </td>
+            </ng-container>
+
+            <!-- Address Column -->
+            <ng-container matColumnDef="address">
+                <th mat-header-cell *matHeaderCellDef> Address </th>
+                <td mat-cell *matCellDef="let student"> {{student.address}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+
 </div>

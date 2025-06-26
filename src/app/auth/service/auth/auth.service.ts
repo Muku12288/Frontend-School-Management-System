@@ -26,7 +26,7 @@ export class AuthService {
 
     return this.http.post(url + 'authenticate', {email, password},{observe: 'response'})
       .pipe(
-        // tap(__ => this.log("User Authentication")),
+        tap(__ => this.log("User Authentication")),
         map((res: HttpResponse<any>)=>{
             this.storageService.saveUser(res.body);
             // find token length from response header, after that break the token
@@ -47,9 +47,9 @@ export class AuthService {
   }
 
 
-  // log(message:String){
-  //   console.log(message);
+  log(message:String){
+    console.log(message);
     
-  // }
+  }
 
 }

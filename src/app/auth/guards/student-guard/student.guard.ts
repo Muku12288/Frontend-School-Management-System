@@ -10,7 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 // Guard will provide a barier that without login cant access dashboard section
 export class StudentGuard implements CanActivate{
-  
+
   
   constructor(
     private router:Router,

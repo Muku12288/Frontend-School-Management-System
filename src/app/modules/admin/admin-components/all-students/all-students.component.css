@@ -51,15 +51,23 @@
 mat-card-actions{
     justify-content: flex-end;
 }
-table th{
+mat-table mat-header-cell{
     color: white;       
     font-size: 18px;      
     font-weight: bold;    
-    background-color: #032a83; 
+    background-color: #11591d; 
     text-align: left
 }
  .example-form{
     border-radius: 3%;
 } 
 
+.mat-mdc-row:nth-child(even){
+    background-color: rgb(205, 186, 223);
+}
+
+.example-container{
+    margin-left: 20px;
+    margin-right: 20px;
+}
 

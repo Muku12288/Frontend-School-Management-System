@@ -24,6 +24,7 @@ import { UpdateTeacherComponent } from './admin-components/update-teacher/update
 import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
 import { MatSortModule } from '@angular/material/sort';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatMenuModule,
     MatTableModule,
     MatIconModule,
-    MatSortModule
+    MatSortModule,
+    MatPaginatorModule
   ]
 })
 export class AdminModule { }

@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 const routes: Routes = [
   //routing of login component from login
   {path:"login", component:LoginComponent, canActivate: [noAuthGuard]},
-  {path:"home", component:HomeComponent, canActivate: [noAuthGuard]},
+  {path:"", component:HomeComponent, canActivate: [noAuthGuard]},
   //routing of admin module from admin module component 
   {path:"admin", loadChildren: ()=> import("./modules/admin/admin.module").then(m => m.AdminModule)},
   //routing of student module from student module 

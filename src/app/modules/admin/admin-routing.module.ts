@@ -17,11 +17,11 @@ const routes: Routes = [
   {path:"dashboard", component:DashboardComponent, canActivate:[AdminGuard]},
   {path:"student", component: PostStudentComponent, canActivate:[AdminGuard]},
   {path:"leaves", component: AllLeavesComponent, canActivate:[AdminGuard]},
-  {path:"students", component: AllStudentsComponent},
-  {path:"student/:studentId", component: UpdateStudentComponent},
-  {path:"teacher", component: PostTeacherComponent},
-  {path:"teachers", component: AllTeachersComponent},
-  {path:"teacher/:teacherId", component: UpdateTeacherComponent},
+  {path:"students", component: AllStudentsComponent, canActivate:[AdminGuard]},
+  {path:"student/:studentId", component: UpdateStudentComponent, canActivate:[AdminGuard]},
+  {path:"teacher", component: PostTeacherComponent, canActivate:[AdminGuard]},
+  {path:"teachers", component: AllTeachersComponent, canActivate:[AdminGuard]},
+  {path:"teacher/:teacherId", component: UpdateTeacherComponent, canActivate:[AdminGuard]},
 ];
 
 @NgModule({

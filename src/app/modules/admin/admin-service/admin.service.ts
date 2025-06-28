@@ -35,7 +35,7 @@ export class AdminService{
   getAllStudents(): Observable<any>{
     return this.http.get<[]>(BASIC_URL + "api/admin/students",
       {
-        headers:this.createAuthorizationHeader() 
+        headers:this.createAuthorizationHeader()
       }
     )
   }

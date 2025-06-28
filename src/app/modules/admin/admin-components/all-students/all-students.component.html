@@ -94,7 +94,7 @@
         </table> -->
 
 
-        <div class="example-container mat-elevation-z8">
+        <div class="example-container mat-elevation-z8 ">
             <mat-table #table [dataSource]="dataSource" matSort>
 
                 <!--- Note that these columns can be defined in any order.
@@ -115,7 +115,7 @@
                 <!-- Email_Id Column -->
                 <ng-container matColumnDef="email">
                 <mat-header-cell *matHeaderCellDef mat-sort-header="email"> Email </mat-header-cell>
-                <mat-cell *matCellDef="let student"> {{student.email}} </mat-cell>
+                <mat-cell *matCellDef="let student" > {{student.email}} </mat-cell>
                 </ng-container>
 
                  <!-- Gender Column -->
@@ -140,6 +140,18 @@
                 <ng-container matColumnDef="address">
                 <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
                 <mat-cell *matCellDef="let student"> {{student.address}} </mat-cell>
+                </ng-container>
+
+                <!-- Edit Column -->
+                <ng-container matColumnDef="edit">
+                <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
+                <mat-cell *matCellDef="let student"> <button mat-flat-button color="primary" style="border-radius: 20px; " routerLink="/admin/student/{{student.id}}">Edit</button> </mat-cell>
+                </ng-container>
+
+                <!-- Delete Column -->
+                <ng-container matColumnDef="delete">
+                <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
+                <mat-cell *matCellDef="let student"> <button mat-flat-button color="warn" style="border-radius: 20px; " (click)="deleteStudent(student.id)">Delete</button> </mat-cell>
                 </ng-container>
 
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

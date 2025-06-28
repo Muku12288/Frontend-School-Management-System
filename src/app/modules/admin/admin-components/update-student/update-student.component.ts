@@ -12,7 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class UpdateStudentComponent {
   validateForm: FormGroup;
   
-  //Get Id from url. this url andrountion file url must be same!
+  //Get Id from url. this url and routiong file url must be same!
   studentId:number = this.activatedRoute.snapshot.params['studentId']
   isSpinning:boolean;
 

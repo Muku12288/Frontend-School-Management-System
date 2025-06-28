@@ -8,7 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providedIn: "root"
 })
 
-// Guard will provide a barier that without login cant access dashboard section
+// Guard will provide a barier that without login cant access admin section
 export class AdminGuard implements CanActivate{
   
   
@@ -22,22 +22,17 @@ export class AdminGuard implements CanActivate{
     next:ActivatedRouteSnapshot,
     state:RouterStateSnapshot
   ):boolean{
-    // if a student logged in and he want to access "admin/dashboard" then it dont allow to access admin dashboard 
-    // and navigate the same student dashboard page and show an error on snackbar and return false.
-
-    //when student loggedin and want to access admin/dashboard then it first check if student loggedin or not 
-    // if loggedin then deny the access so thats why student logic write in adminGuard file and admin logic in studentGuard
-
-    if(StorageService.isStudentLoggedIn()){
-      this.snackbar.open("You dont have access to this page", "Close", {duration:5000});
-      this.router.navigateByUrl("/student/dashboard");
-      return false;
+   //Before accessing admins any features it first check if admin is logedin or not
+   // And if admin is log in then it will return true and successfully access the page
+   
+   //Guard are decleare/use in admin-routing.module.ts file
+   if(StorageService.isAdminLoggedIn()){
+      return true;
     } 
-    // if token is not present in localstorage means any one not loggedin so it will navigate into login page 
-    // and show an error through snackbar
     else if(!StorageService.hasToken()){
       StorageService.logout();
-      this.router.navigateByUrl("/login");
+      // this.router.navigateByUrl("/login");
+      this.router.navigateByUrl("/");
       this.snackbar.open("You are not loggedIn", "Close",{duration:5000})
       return false;
     }

@@ -24,7 +24,7 @@ export class AllStudentsComponent{
     private snackBar: MatSnackBar
   ){}
 
-  displayedColumns: string[] = ['id', 'name','gender', 'email', 'dob', 'studentClass', 'address'];
+  displayedColumns: string[] = ['id', 'name','gender', 'email', 'dob', 'studentClass', 'address', 'edit', 'delete'];
   dataSource = new MatTableDataSource<Admin>();
   
   //******* SORTING NOT WORK *********************/
@@ -35,7 +35,7 @@ export class AllStudentsComponent{
   
   getAllStudents(){
     this.service.getAllStudents().subscribe((res)=>{
-      console.log(res);
+      // console.log(res);
       this.students= res;
       this.dataSource.data = res;
       this.dataSource = new MatTableDataSource<Admin>(res);

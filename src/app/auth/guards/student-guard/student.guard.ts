@@ -21,15 +21,14 @@ export class StudentGuard implements CanActivate{
     next:ActivatedRouteSnapshot,
     state:RouterStateSnapshot
   ):boolean{
-  // If admin loggedin it will navigate into "/admin/dashboard" and return false
-    if(StorageService.isAdminLoggedIn()){
-      this.router.navigateByUrl("/admin/dashboard");
-      this.snackbar.open("You dont have access to this page", "Close", {duration:5000});
-      return false;
+    
+    if(StorageService.isStudentLoggedIn()){
+      return true;
     } 
     else if(!StorageService.hasToken()){
       StorageService.logout();
-      this.router.navigateByUrl("/login");
+      // this.router.navigateByUrl("/login");
+      this.router.navigateByUrl("/");
       this.snackbar.open("You are not loggedIn", "Close",{duration:5000})
       return false;
     }

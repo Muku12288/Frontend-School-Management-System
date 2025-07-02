@@ -1,9 +1,9 @@
-<div class="card-container" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
+<!-- <div class="card-container" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
     <mat-card class="student-card" *ngFor="let leave of leaves">
 
         <mat-card-header style="background-color: #3f51b5">
-            <mat-card-title style="color: white;">ID : <strong>{{ leave.userid}}</strong></mat-card-title>
-            <!-- <mat-card-subtitle style="color: white;">Class: <strong>{{ leave.studentClass}}</strong></mat-card-subtitle> -->
+            <mat-card-title style="color: white;">ID - <strong>{{ leave.userid +" : "+ leave.name}}</strong></mat-card-title>
+            <mat-card-subtitle style="color: white;">Class: <strong>{{ leave.studentClass}}</strong></mat-card-subtitle>
         </mat-card-header>
 
         <mat-card-content style="margin-top: 10px;">
@@ -14,17 +14,101 @@
                 [ngStyle]="{'color': leave.studentLeaveStatus === 'Approved' ? 'green' : leave.studentLeaveStatus === 'Disapproved' ?
                  'red' : 'orange'}">{{leave.studentLeaveStatus}}</strong></p>
         </mat-card-content>
-<!-- Action Menu button for perform action either Approve or reject-->
+// Action Menu button for perform action either Approve or reject
         <mat-card-actions>
             <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">Action</button>
             <mat-menu #menu="matMenu">
-                <!-- when we click these button it will call this method with these static value -->
-     <!--Here leave.id will get, when call getAllLeaves() in admin-leaves.ts, leaves variable are assign by response value-->
+        // when we click these button it will call this method with these static value
+     // Here leave.id will get, when call getAllLeaves() in admin-leaves.ts, leaves variable are assign by response value
                 <button mat-menu-item (click)="changeLeaveStatus(leave.id, 'Approve')">Approve</button>
                 <button mat-menu-item (click)="changeLeaveStatus(leave.id, 'Reject')">Reject</button>
             </mat-menu>
         </mat-card-actions>
 
     </mat-card>
+</div> -->
+
+
+
+<div style="display: flex; width: auto; justify-content: space-between;">
+    <div style=" align-content: center; margin-left: 20px;">
+        <h1 style=" padding: 6px; font-weight: bold; color: rgb(9, 9, 134);">LEAVE SECTION</h1>
+    </div>
+    <div style=" margin-right: 40px; ">
+        <mat-form-field appearance="outline">
+            <mat-label>Search</mat-label>
+            <input (input)="searchLeave(filter.value)" matInput placeholder="search leave" #filter>
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+    </div>
 </div>
 
+
+
+<div class="example-container mat-elevation-z8 ">
+    <mat-table #table [dataSource]="dataSource" matSort>
+
+        <!-- Id Column -->
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header="id"> ID </mat-header-cell>
+            <mat-cell *matCellDef="let leave"> {{leave.id}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef > Name </mat-header-cell>
+            <mat-cell *matCellDef="let leave"> {{leave.name}} </mat-cell>
+        </ng-container>
+
+        <!-- Class Column -->
+        <ng-container matColumnDef="studentClass">
+            <mat-header-cell *matHeaderCellDef mat-sort-header="studentClass"> Class </mat-header-cell>
+            <mat-cell *matCellDef="let leave"> {{leave.studentClass}} </mat-cell>
+        </ng-container>
+
+        <!-- Date Column -->
+        <ng-container matColumnDef="date">
+            <mat-header-cell *matHeaderCellDef mat-sort-header="date"> Date </mat-header-cell>
+            <mat-cell *matCellDef="let leave"> {{leave.date | date: 'dd, MMM, y'}} </mat-cell>
+        </ng-container>
+
+        <!-- Subject Column -->
+        <ng-container matColumnDef="subject">
+            <mat-header-cell *matHeaderCellDef > Subject </mat-header-cell>
+            <mat-cell *matCellDef="let leave"> {{leave.subject}} </mat-cell>
+        </ng-container>
+
+        <!-- Body Column -->
+        <ng-container matColumnDef="body">
+            <mat-header-cell *matHeaderCellDef > Body </mat-header-cell>
+            <mat-cell *matCellDef="let leave"> {{leave.body}} </mat-cell>
+        </ng-container>
+
+        <!-- Status Column -->
+        <ng-container matColumnDef="studentLeaveStatus">
+            <mat-header-cell *matHeaderCellDef mat-sort-header="status"> Status </mat-header-cell>
+            <mat-cell *matCellDef="let leave" [ngStyle]="{'color': leave.studentLeaveStatus === 'Approved' ? 'green' : leave.studentLeaveStatus === 'Disapproved' ?
+                 'red' : 'orange'}"> {{leave.studentLeaveStatus}} </mat-cell>
+        </ng-container>
+
+        <!-- Action Column -->
+        <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+            <mat-cell *matCellDef="let leave">
+                <button mat-flat-button color="primary" style="border-radius: 20px;" [matMenuTriggerFor]="menu">Action</button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="changeLeaveStatus(leave.id, 'Approve')">Approve</button>
+                    <button mat-menu-item (click)="changeLeaveStatus(leave.id, 'Reject')">Reject</button>
+                </mat-menu>
+            </mat-cell>
+
+        </ng-container>
+
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15, 20, 100]" [showFirstLastButtons]="true">
+    </mat-paginator>
+</div>

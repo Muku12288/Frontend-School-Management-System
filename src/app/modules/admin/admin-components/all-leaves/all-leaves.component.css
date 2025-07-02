@@ -1,5 +1,4 @@
-
-
+/* 
 .card-container{
     display: flex;
     flex-wrap: wrap;
@@ -58,4 +57,85 @@
     mat-card-actions{
         justify-content: flex-end;
     }
+} */
+
+
+
+mat-table mat-header-cell {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #373a37;
+    text-align: left
 }
+
+
+.mat-mdc-row:nth-child(even) {
+    background-color: rgb(182, 232, 228);
+}
+
+.example-container {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+/* .limit-email {
+    max-width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+} */
+
+.mat-column-id {
+    flex: 0 0 8% !important;
+   
+}
+
+.mat-column-name {
+    flex: 0 0 13% !important;
+    
+}
+.mat-column-studentClass {
+    flex: 0 0 8% !important;
+    width: 3% !important;
+}
+.mat-column-date {
+    flex: 0 0 12% !important;
+    width: 3% !important;
+}
+
+.mat-column-subject {
+    flex: 0 0 14%;
+}
+.mat-column-status {
+    flex: 0 0 5%;
+}
+.mat-column-action {
+    flex: 0 0 10%;
+}
+
+.mat-column-body {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 25% !important;
+    width: 15% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    word-break: break-word;
+
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+
+
+/* .mat-column-dob {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    word-break: break-word;
+} */

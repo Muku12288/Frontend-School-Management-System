@@ -22,150 +22,87 @@
 </div> -->
 
 
-<!--  import {MatTableModule} from '@angular/material/table'; -->
 
-<!-- <div> -->
-
-    <div style="display: flex; width: auto; justify-content: space-between;">
-        <div style=" align-content: center; margin-left: 20px;">
-            <h1 style=" padding: 6px; font-weight: bold; color: rgb(9, 9, 134);">OUR ALL STUDENTs</h1>
-        </div>
-        <div style=" margin-right: 40px; ">
-            <mat-form-field appearance="outline">
-                <mat-label>Search</mat-label>
-                    <input (input)="searchStudent(filter.value)" matInput placeholder="search student" #filter>
-                <mat-icon matSuffix>search</mat-icon>
-            </mat-form-field>
-        </div>
+<div style="display: flex; width: auto; justify-content: space-between;">
+    <div style=" align-content: center; margin-left: 20px;">
+        <h1 style=" padding: 6px; font-weight: bold; color: rgb(9, 9, 134);">OUR ALL STUDENTs</h1>
     </div>
-    
-        
-  
-
-    <!-- <div class="container" style="width: full; margin-left: 20px; margin-right: 20px; margin-top: 10px; ">
-        
-        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 ">
-
-
-            Id Column
-            <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number"> Id </th>
-                <td mat-cell *matCellDef="let student"> {{student.id}} </td>
-            </ng-container>
-
-            Name Column
-            <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name"> Name </th>
-                <td mat-cell *matCellDef="let student"> {{student.name}} </td>
-            </ng-container>
-
-            Email_Id Column
-            <ng-container matColumnDef="email">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Email_Id </th>
-                <td mat-cell *matCellDef="let student"> {{student.email}} </td>
-            </ng-container>
-
-            Gender Column
-            <ng-container matColumnDef="gender">
-                <th mat-header-cell *matHeaderCellDef> Gender </th>
-                <td mat-cell *matCellDef="let student"> {{student.gender}} </td>
-            </ng-container>
-
-            DOB Column
-            <ng-container matColumnDef="dob">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> DOB </th>
-                <td mat-cell *matCellDef="let student"> {{student.dob | date: 'd,MMM,y'}} </td>
-            </ng-container>
-
-            Class Column
-            <ng-container matColumnDef="studentClass">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Class </th>
-                <td mat-cell *matCellDef="let student"> {{student.studentClass}} </td>
-            </ng-container>
-
-            Address Column
-            <ng-container matColumnDef="address">
-                <th mat-header-cell *matHeaderCellDef> Address </th>
-                <td mat-cell *matCellDef="let student"> {{student.address}} </td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table> -->
+    <div style=" margin-right: 40px; ">
+        <mat-form-field appearance="outline">
+            <mat-label>Search</mat-label>
+            <input (input)="searchStudent(filter.value)" matInput placeholder="search student" #filter>
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+    </div>
+</div>
 
 
-        <div class="example-container mat-elevation-z8 ">
-            <mat-table #table [dataSource]="dataSource" matSort>
 
-                <!--- Note that these columns can be defined in any order.
+<div class="example-container mat-elevation-z8 ">
+    <mat-table #table [dataSource]="dataSource" matSort>
+
+        <!--- Note that these columns can be defined in any order.
                     The actual rendered columns are set as a property on the row definition" -->
 
-                <!-- Id Column -->
-                <ng-container matColumnDef="id">
-                <mat-header-cell *matHeaderCellDef mat-sort-header="id"> ID </mat-header-cell>
-                <mat-cell *matCellDef="let student"> {{student.id}} </mat-cell>
-                </ng-container>
+        <!-- Id Column -->
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header="id"> ID </mat-header-cell>
+            <mat-cell *matCellDef="let student"> {{student.id}} </mat-cell>
+        </ng-container>
 
-                <!-- Name Column -->
-                <ng-container matColumnDef="name">
-                <mat-header-cell *matHeaderCellDef mat-sort-header="name"> Name </mat-header-cell>
-                <mat-cell *matCellDef="let student"> {{student.name}} </mat-cell>
-                </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header="name"> Name </mat-header-cell>
+            <mat-cell *matCellDef="let student"> {{student.name}} </mat-cell>
+        </ng-container>
 
-                <!-- Email_Id Column -->
-                <ng-container matColumnDef="email">
-                <mat-header-cell *matHeaderCellDef mat-sort-header="email"> Email </mat-header-cell>
-                <mat-cell *matCellDef="let student" > {{student.email}} </mat-cell>
-                </ng-container>
+        <!-- Email_Id Column -->
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef mat-sort-header="email"> Email </mat-header-cell>
+            <mat-cell *matCellDef="let student"> {{student.email}} </mat-cell>
+        </ng-container>
 
-                 <!-- Gender Column -->
-                <ng-container matColumnDef="gender">
-                <mat-header-cell *matHeaderCellDef mat-sort-header="gender"> Gender </mat-header-cell>
-                <mat-cell *matCellDef="let student"> {{student.gender}} </mat-cell>
-                </ng-container>
+        <!-- Gender Column -->
+        <ng-container matColumnDef="gender">
+            <mat-header-cell *matHeaderCellDef mat-sort-header="gender"> Gender </mat-header-cell>
+            <mat-cell *matCellDef="let student"> {{student.gender}} </mat-cell>
+        </ng-container>
 
-                 <!-- DOB Column -->
-                <ng-container matColumnDef="dob">
-                <mat-header-cell *matHeaderCellDef mat-sort-header="dob"> DOB </mat-header-cell>
-                <mat-cell *matCellDef="let student"> {{student.dob | date: 'd,MMM,y'}} </mat-cell>
-                </ng-container>
+        <!-- DOB Column -->
+        <ng-container matColumnDef="dob">
+            <mat-header-cell *matHeaderCellDef mat-sort-header="dob"> DOB </mat-header-cell>
+            <mat-cell *matCellDef="let student"> {{student.dob | date: 'd,MMM,y'}} </mat-cell>
+        </ng-container>
 
-                 <!-- Class Column -->
-                <ng-container matColumnDef="studentClass">
-                <mat-header-cell *matHeaderCellDef mat-sort-header="studentClass"> Class </mat-header-cell>
-                <mat-cell *matCellDef="let student"> {{student.studentClass}} </mat-cell>
-                </ng-container>
+        <!-- Class Column -->
+        <ng-container matColumnDef="studentClass">
+            <mat-header-cell *matHeaderCellDef mat-sort-header="studentClass"> Class </mat-header-cell>
+            <mat-cell *matCellDef="let student"> {{student.studentClass}} </mat-cell>
+        </ng-container>
 
-                <!-- Address Column -->
-                <ng-container matColumnDef="address">
-                <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
-                <mat-cell *matCellDef="let student"> {{student.address}} </mat-cell>
-                </ng-container>
+        <!-- Address Column -->
+        <ng-container matColumnDef="address">
+            <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
+            <mat-cell *matCellDef="let student"> {{student.address}} </mat-cell>
+        </ng-container>
 
-                <!-- Edit Column -->
-                <ng-container matColumnDef="edit">
-                <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
-                <mat-cell *matCellDef="let student"> <button mat-flat-button color="primary" style="border-radius: 20px; " routerLink="/admin/student/{{student.id}}">Edit</button> </mat-cell>
-                </ng-container>
+        <!-- Edit Column -->
+        <ng-container matColumnDef="edit">
+            <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
+            <mat-cell *matCellDef="let student"> <button mat-flat-button color="primary" style="border-radius: 20px; "
+                    routerLink="/admin/student/{{student.id}}">Edit</button> </mat-cell>
+        </ng-container>
 
-                <!-- Delete Column -->
-                <ng-container matColumnDef="delete">
-                <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
-                <mat-cell *matCellDef="let student"> <button mat-flat-button color="warn" style="border-radius: 20px; " (click)="deleteStudent(student.id)">Delete</button> </mat-cell>
-                </ng-container>
+        <!-- Delete Column -->
+        <ng-container matColumnDef="delete">
+            <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
+            <mat-cell *matCellDef="let student"> <button mat-flat-button color="warn" style="border-radius: 20px; "
+                    (click)="deleteStudent(student.id)">Delete</button> </mat-cell>
+        </ng-container>
 
-                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-            </mat-table>
-            <mat-paginator #paginator
-                 [pageSize]="10"
-                 [pageSizeOptions]="[5, 10, 15, 20, 100]"
-                 [showFirstLastButtons]="true">
-            </mat-paginator>
-        </div>
-
-        
-
-    <!-- </div> -->
-
-<!-- </div> -->
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15, 20, 100]" [showFirstLastButtons]="true">
+    </mat-paginator>
+</div>

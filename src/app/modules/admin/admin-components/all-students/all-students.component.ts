@@ -2,9 +2,9 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { AdminService } from '../../admin-service/admin.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
-import { Admin } from '../../admin';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { Student } from '../../student';
 
 
 @Component({
@@ -15,8 +15,8 @@ import { MatPaginator } from '@angular/material/paginator';
 export class AllStudentsComponent{
 
   // here Admin is object of admin interface(admin.ts) where define student data format
-  students:Admin[] = [];
-  filterStudent:Admin[] = [];
+  students:Student[] = [];
+  filterStudent:Student[] = [];
   @ViewChild(MatSort) sort: any;
   @ViewChild(MatPaginator) paginator: any;
 
@@ -25,7 +25,7 @@ export class AllStudentsComponent{
   ){}
 
   displayedColumns: string[] = ['id', 'name','gender', 'email', 'dob', 'studentClass', 'address', 'edit', 'delete'];
-  dataSource = new MatTableDataSource<Admin>();
+  dataSource = new MatTableDataSource<Student>();
   
   //******* SORTING NOT WORK *********************/
   ngOnInit(): void {
@@ -38,7 +38,7 @@ export class AllStudentsComponent{
       // console.log(res);
       this.students= res;
       this.dataSource.data = res;
-      this.dataSource = new MatTableDataSource<Admin>(res);
+      this.dataSource = new MatTableDataSource<Student>(res);
 
       // Override default string sorting
 
@@ -84,7 +84,7 @@ export class AllStudentsComponent{
       this.snackBar.open("No Record Found !", "Close", {duration: 5000})
     }
     
-    this.dataSource = new MatTableDataSource<Admin>(this.filterStudent);
+    this.dataSource = new MatTableDataSource<Student>(this.filterStudent);
   }
   
     

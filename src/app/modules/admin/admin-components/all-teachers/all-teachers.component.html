@@ -1,3 +1,16 @@
+<div style="display: flex; width: auto; justify-content: space-between;">
+    <div style=" align-content: center; margin-left: 20px;">
+        <h1 style=" padding: 6px; font-weight: bold; color: rgb(9, 9, 134);">OUR ALL TEACHERs</h1>
+    </div>
+    <div style=" margin-right: 40px; ">
+        <mat-form-field appearance="outline">
+            <mat-label>Search</mat-label>
+            <input (input)="searchTeacher(filter.value)" matInput placeholder="search student" #filter>
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+    </div>
+</div>
+
 <div class="card-container" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
     <mat-card class="teacher-card" *ngFor="let teacher of teachers">
 

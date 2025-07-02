@@ -1,7 +1,8 @@
-import { HttpClient, HttpHandler,HttpEvent, HttpInterceptor, HttpRequest, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHandler,HttpEvent, HttpInterceptor, HttpRequest, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { EnvironmentInjector, Injectable } from '@angular/core';
 import { StorageService } from '../../../auth/service/storage/storage.service';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
+import { Router } from '@angular/router';
 // import { environment } from '../../environments/environment';
 
 const BASIC_URL = ["http://localhost:8080/"]
@@ -11,7 +12,10 @@ const BASIC_URL = ["http://localhost:8080/"]
 })
 export class AdminService{
 
-  constructor(private http:HttpClient) { }
+  constructor(
+    private http:HttpClient,
+    private router:Router
+  ) { }
 
   // it will call backend api to add student into database by admin
   addStudent(studentDto:any):Observable<any>{
@@ -36,8 +40,13 @@ export class AdminService{
     return this.http.get<[]>(BASIC_URL + "api/admin/students",
       {
         headers:this.createAuthorizationHeader()
-      }
-    )
+      }).pipe(catchError((err:HttpErrorResponse)=>{
+        if(err.status === 401){
+          window.localStorage.removeItem('c_token');
+          this.router.navigateByUrl("/login")
+        }
+        return throwError(err.message)
+      }))
   }
 
 
@@ -70,8 +79,13 @@ export class AdminService{
     return this.http.get<[]>(BASIC_URL + `api/admin/leaves`,
       {
          headers:this.createAuthorizationHeader()
-      }
-    )
+      }).pipe(catchError((err:HttpErrorResponse)=>{
+        if(err.status === 401){
+          window.localStorage.removeItem('c_token');
+          this.router.navigateByUrl("/login")
+        }
+        return throwError(err.message)
+      }))
   }
   changeLeaveStatus(leaveId:number, status:string): Observable<any>{
     return this.http.get<[]>(BASIC_URL + `api/admin/leave/${leaveId}/${status}`,
@@ -98,7 +112,13 @@ export class AdminService{
      return this.http.get<[]> (BASIC_URL+ "api/admin/teachers",
       {
         headers:this.createAuthorizationHeader(),
-      })
+      }).pipe(catchError((err:HttpErrorResponse)=>{
+        if(err.status === 401){
+          window.localStorage.removeItem('c_token');
+          this.router.navigateByUrl("/login")
+        }
+        return throwError(err.message)
+      }))
   }
 
   deleteTeacher(teacherId:any):Observable<any>{

@@ -1,4 +1,4 @@
-export interface Admin {
+export interface Student {
     id:number,
     name:string,
     dob: Date,
@@ -7,4 +7,3 @@ export interface Admin {
     email:string,
     address:string
 }
-

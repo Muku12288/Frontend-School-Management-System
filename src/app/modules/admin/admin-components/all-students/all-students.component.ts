@@ -27,7 +27,6 @@ export class AllStudentsComponent{
   displayedColumns: string[] = ['id', 'name','gender', 'email', 'dob', 'studentClass', 'address', 'edit', 'delete'];
   dataSource = new MatTableDataSource<Student>();
   
-  //******* SORTING NOT WORK *********************/
   ngOnInit(): void {
     this.getAllStudents();
     

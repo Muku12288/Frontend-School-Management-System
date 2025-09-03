@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  
   teachers:any[]=[];
 
   constructor(
